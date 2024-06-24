@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .result p {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Client Information Form</h1>
+        <form action="/predict" method="post">
+            <label for="client_id">Client ID:</label>
+            <input type="text" id="client_id" name="client_id" value="{{ client_id }}">
+            
+            <label for="client_income">Client Income:</label>
+            <input type="number" id="client_income" name="client_income" value="{{ client_income }}">
+            
+            <label for="car_owner">Car Owner:</label>
+            <select id="car_owner" name="car_owner">
+                <option value="1" {{ 'selected' if car_owner == '1' else '' }}>Yes</option>
+                <option value="0" {{ 'selected' if car_owner == '0' else '' }}>No</option>
+            </select>
+            
+            <label for="bike_owned">Bike Owned:</label>
+            <select id="bike_owned" name="bike_owned">
+                <option value="1" {{ 'selected' if bike_owned == '1' else '' }}>Yes</option>
+                <option value="0" {{ 'selected' if bike_owned == '0' else '' }}>No</option>
+            </select>
+            
+            <label for="active_loan">Active Loan:</label>
+            <select id="active_loan" name="active_loan">
+                <option value="1" {{ 'selected' if active_loan == '1' else '' }}>Yes</option>
+                <option value="0" {{ 'selected' if active_loan == '0' else '' }}>No</option>
+            </select>
+            
+            <label for="credit_amount">Credit Amount:</label>
+            <input type="number" id="credit_amount" name="credit_amount" value="{{ credit_amount }}">
+
+            <label for="loan_annuity">Loan Annuity:</label>
+            <input type="number" id="loan_annuity" name="loan_annuity" value="{{ loan_annuity }}">
+
+            <label for="client_income_type">Client Income Type:</label>
+            <input type="text" id="client_income_type" name="client_income_type" value="{{ client_income_type }}">
+            
+            <label for="client_education">Client Education:</label>
+            <input type="text" id="client_education" name="client_education" value="{{ client_education }}">
+            
+            <label for="client_marital_status">Client Marital Status:</label>
+            <input type="text" id="client_marital_status" name="client_marital_status" value="{{ client_marital_status }}">
+            
+            <label for="client_gender">Client Gender:</label>
+            <input type="text" id="client_gender" name="client_gender" value="{{ client_gender }}">
+            
+            <label for="loan_contract_type">Loan Contract Type:</label>
+            <input type="text" id="loan_contract_type" name="loan_contract_type" value="{{ loan_contract_type }}">
+            
+            <label for="client_occupation">Client Occupation:</label>
+            <input type="text" id="client_occupation" name="client_occupation" value="{{ client_occupation }}">
+            
+            <label for="type_organization">Type Organization:</label>
+            <input type="text" id="type_organization" name="type_organization" value="{{ type_organization }}">
+            
+            <input type="submit" value="Submit">
+        </form>
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>{{ prediction_text }}</p>
+        </div>
+    </div>
+</body>
+</html>
